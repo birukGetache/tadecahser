@@ -370,7 +370,7 @@ const Cosmo = () => {
           Filter the Cosmo
           <input type='text' style={{margin:"10px" ,marginLeft:"5px", display:"block"}} onChange={handleSearch}></input>
           <Table dataSource={filteredData} columns={columnSale} pagination={false} className='cosmo'/>
-          <Fotter style={{marginLeft:"-100%"}}>Powered by Bernos © 2024 v 1.1.2</Fotter>
+          <Fotter style={{marginLeft:"-100%"}}>Powered by Safeware © 2024 v 1.1.2</Fotter>
           <Modal
             title={`Sell ${selectedItem?.name}`}
             visible={saleVisible}

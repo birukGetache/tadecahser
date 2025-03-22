@@ -390,7 +390,7 @@ if(user.role=== ''){
                     <DashboardP style={{display:"inline", fontFamily:' "DM Sans", sans-serif'}}>Get tech Help</DashboardP>
                 </Get>
                 </>)}
-                <Fotter>Powered by Bernos © 2024 v 1.1.2</Fotter>
+                <Fotter>Powered by Safeware © 2024 v 1.1.2</Fotter>
                 </div>
             </SideBar>
             <HomeContent>

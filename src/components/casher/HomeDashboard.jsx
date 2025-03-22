@@ -729,7 +729,7 @@ const expandsMedicine = () => {
                 </>)} */}
                 <div></div>
                 <div></div>
-                <Fotter style={{marginLeft:"-100%"}}>Powered by Bernos © 2024 v 1.1.2</Fotter>
+                <Fotter style={{marginLeft:"-100%"}}>Powered by Safeware © 2024 v 1.1.2</Fotter>
             
             </div>
             {clicked == 28 &&<div>
