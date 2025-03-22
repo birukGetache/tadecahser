@@ -1,0 +1,120 @@
+/* CashierLogin.css */
+
+/* Apply the font family globally */
+* {
+    font-family: "DM Sans", sans-serif;
+  }
+  
+  .cashier-login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #e9f2f7; /* Light blue background for a calm effect */
+  }
+  
+  .cashier-login-form {
+    background-color: #ffffff;
+    padding: 15px;
+    border-radius: 12px; /* More pronounced rounded corners */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Subtle deep shadow */
+    width: 100%;
+    max-width: 380px; /* Max width to ensure form doesn't stretch too wide */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .cashier-login-form:hover {
+    transform: scale(1.02); /* Slight zoom effect on hover */
+    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover */
+  }
+  
+  h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 1.6rem; /* Slightly larger font size for the heading */
+    font-weight: 600;
+  }
+  
+  .input-group {
+    margin-bottom: 20px; /* Increased space between input fields for better readability */
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 8px; /* Space between label and input */
+    color: #666; /* Softer label color */
+    font-weight: 500; /* Slightly bolder label */
+    font-size: 0.9rem; /* Reduced font size for labels */
+  }
+  
+  input {
+    width: 90%;
+    padding: 12px 15px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem; /* Slightly larger font size for input */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  input:focus {
+    border-color: #4CAF50; /* Green border on focus */
+    box-shadow: 0 0 8px rgba(76, 175, 80, 0.3); /* Subtle green glow */
+    outline: none; /* Remove default outline */
+  }
+  
+  .error-message {
+    color: #ff4d4d;
+    font-weight: 600;
+    margin-bottom: 20px; /* More space after error message */
+    font-size: 0.9rem;
+    text-align: center; /* Center-align error messages */
+  }
+  
+  .button-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    gap: 15px; /* Space between buttons */
+  }
+  
+  button {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  button:hover {
+    transform: scale(1.05); /* Slight zoom effect on hover */
+  }
+  
+  .login-btn {
+    background-color: #4CAF50;
+    color: white;
+  }
+  
+  .login-btn:hover {
+    background-color: #45a049;
+  }
+  
+  .cancel-btn {
+    background-color: #f44336;
+    color: white;
+  }
+  
+  .cancel-btn:hover {
+    background-color: #e53935;
+  }
+  
+  .admin-btn {
+    background-color: #2196F3;
+    color: white;
+  }
+  
+  .admin-btn:hover {
+    background-color: #1976D2;
+  }
+  

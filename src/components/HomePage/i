@@ -1,0 +1,19 @@
+import React from 'react';
+import {Home , SideBar , HomeContent , Image ,AdminInfo ,PAdminInfo }from '../styles/styleHome.jsx';
+const HomePage = () =>{
+return(
+    <Home>
+<SideBar>
+    <Image src='./Logo.png'></Image>
+    <AdminInfo>
+        <PAdminInfo>hellow</PAdminInfo>
+    </AdminInfo>
+</SideBar>
+<HomeContent>
+    
+</HomeContent>
+    </Home>
+    
+)
+}
+export default HomePage;

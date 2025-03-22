@@ -1,0 +1,433 @@
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: #1a222b;
+ 
+}
+@import url('https://fonts.googleapis.com/css?family=Montserrat:900');
+#root{
+box-sizing: border-box;
+min-width: 100vw;
+}
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  font-family: "DM Sans", sans-serif;
+  margin-left:"10px";
+}
+.cartNumber{
+  border-radius: 50%;
+  width:15px;
+  height: 15px;
+  background-color: red;
+  color: #333;
+  font-size: 15px;
+display: flex;
+align-items: center;
+justify-content: center;
+  box-sizing: border-box;
+  margin-left: -10%;
+  margin-top: 25%;
+}
+
+  @media screen and (max-width: 500px) {
+    .fullheight{
+      bottom:unset !important;
+    }
+    .inventorylistofmedicine{
+font-size: 15px !important;
+margin-top: 10px !important;
+    }
+ 
+  }
+  @media screen and (max-width: 1000px) {
+    .casherlist{
+      display: flex !important;
+      flex-direction: column;
+    }
+ 
+  }
+
+.admin-table th, .admin-table td {
+  padding: 15px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+.admin-table th {
+  background-color: #f2f2f2;
+  color: #333;
+}
+
+.admin-table tr:hover {
+  background-color: #f5f5f5; /* Highlight on hover */
+}
+
+.profile-image {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.delete-button {
+  padding: 5px;
+  border: none;
+  border-radius: 10px;
+  text-decoration: underline;
+  color: red;
+  cursor: pointer;
+  background: none; /* Keep it flat */
+  transition: color 0.3s ease;
+}
+
+.delete-button:hover {
+  color: darkred; /* Change color on hover for better interaction */
+}
+.profile-container{
+  width:auto;
+  height:80px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border: #1a222b solid 2px;
+}
+
+.sublist{
+  width: 100%;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+background-color: #1a222b;
+grid-column: span 2;
+}
+
+@media screen and (max-width: 1500px) {
+  .wrap{
+   flex-wrap: wrap;
+   height: fit-content !important;
+  }
+  .cosmos{
+    padding: 0 !important;
+    overflow-x: auto;
+    width: 100%;
+  }
+  .customer{
+    width: 100vw;
+    overflow-x: auto;
+   box-sizing: border-box;
+  }
+  .homebar {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 10px; /* Optional: space between grid items */
+    padding-left: 30px;
+    padding-right: 30px;
+}
+.pad{
+  padding-left: 10px !important;
+}
+.homepage{
+  height: unset !important;
+}
+  .sublist{
+    width: 100%;
+    z-index: 99999;
+    position: unset;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+ background-color: #1a222b;
+ grid-column: span 2;
+  }
+  .customerPage{
+    width: 100vw;
+    box-sizing: border-box !important;
+   }
+.customer{
+  background-color: white;
+}
+.buttom{
+  margin-bottom: 10px;
+}
+.name3{
+  box-sizing: border-box;
+  overflow-x: hidden;
+  padding: 0 !important;
+  grid-template-columns: unset;
+}
+.medicineDashboard{
+  box-sizing: border-box;
+  width: calc(100vw - 20px);
+}
+.barcontainer{
+  box-sizing: border-box;
+  width: calc(100vw - 20px);
+  overflow-x: auto;
+}
+ }
+ @media screen and (max-width: 500px) {
+ .split{
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  height:fit-content !important;
+
+ }
+ .header{
+  display: grid !important;
+  place-items: center;
+ }
+ .mainsellpart{
+  display: flex !important;
+  flex-direction: column;
+ }
+ .searchs{
+display: grid !important;
+gap: 10px;
+margin-bottom: 10px !important;
+ }
+ .search{
+  width: 100% !important;
+  margin: auto !important;
+ }
+ .addnewItems{
+  display:none;
+ }
+ 
+ .splitwithmargin{
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  margin: auto 10px;
+  height: auto !important;
+  box-sizing: border-box;
+  width: calc(100vw - 20px) !important;
+ }
+ .one{
+  margin-right: 0 !important;
+  padding: 0 !important;
+  width: 100% !important;
+ }
+ .orderContainer{
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+ }
+ .order{
+  width: calc(100% - 30px);
+  overflow: auto;
+  padding-left: 0 !important;
+ }
+ .hidden{
+  display: none;
+ }
+ .buttom{
+  margin-bottom: 10px;
+ }
+ /* .profile-contaner{
+  position: relative;
+  left: -80px;
+ } */
+ .add{
+  padding-left: 3px !important;
+ }
+ .newTable{
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  margin: auto;
+  width: 100vw !important;
+  height: auto !important;
+  box-sizing: border-box;
+  background-color: white;
+ }
+
+ .one{
+  margin: 10px auto;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+ }
+ .name3{
+  grid-template-columns: 1fr !important;
+  width: 100vw !important;
+ }
+ .input{
+  width: 90% !important;
+  height: 30px;
+ }
+ .cosmo{
+  width: 100vw;
+  overflow-x:auto;
+   background-color: white;
+}
+ .ant-table{
+  margin-top: 50px;
+  overflow-y: auto;
+  overflow-x: auto;
+  width: calc(100vw -20px);
+ }
+ .medicineTable{
+  width: calc(100vw - 10vw);
+  overflow-x: auto;
+ }
+ .notification{
+  width: calc(100vw - 20px);
+  overflow-x: auto;
+ }
+ .admin-table{
+  width: 80vw;
+  overflow-x: auto;
+  margin: 0;
+ }
+ .salesReportOne{
+  width:100vw ;
+  box-sizing: border-box;
+  overflow-x: auto;
+ }
+
+ .overflow{
+  height: fit-content !important;
+}
+.height{
+  height: auto !important;
+}
+.auto{
+grid-template-columns: 1fr !important;
+}
+ }
+ .material-symbols-outlined {
+   font-variation-settings:
+   'FILL' 0,
+   'wght' 400,
+   'GRAD' 0,
+   'opsz' 24
+ }
+
+.svg{
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50% );
+    width:100%;
+    height:350px;
+
+}
+.svg text{
+    font-size: 10rem;
+    fill:#1d242e;
+    stroke-width: 1px;
+    stroke: #fff;
+    stroke-linejoin:round;
+    stroke-dasharray: 100;
+    animation: animate 1s linear infinite;
+}
+@keyframes animate {
+    100%{
+       stroke-dashoffset: 160;
+    }
+}
+.name-container{
+  padding-top: 60px !important;
+  font-size: 23px;
+  text-wrap: nowrap;
+  font-family: "DM Sans", sans-serif;
+  text-transform: uppercase;
+  color: #ddd;
+}
+
+/* CSS Animation for Slide-In */
+@keyframes slideIn {
+  from {
+      transform: translateX(100%); /* Start from outside the right side */
+      opacity: 0;
+  }
+  to {
+      transform: translateX(0); /* End at its normal position */
+      opacity: 1;
+  }
+}
+
+/* CSS Animation for Slide-Out */
+@keyframes slideOut {
+  from {
+      transform: translateX(0); /* Start from its normal position */
+      opacity: 1;
+  }
+  to {
+      transform: translateX(100%); /* Slide out to the right */
+      opacity: 0;
+  }
+}
+
+@keyframes go{
+  from {
+    transform: translateX(0); /* Start from its normal position */
+    opacity: 1;
+}
+to {
+    transform: translateX(100%); /* Slide out to the right */
+    opacity: 0;
+}
+}
+
+@keyframes come{
+  from {
+    transform: translateX(100%); /* Start from outside the right side */
+    opacity: 0;
+}
+to {
+    transform: translateX(0); /* End at its normal position */
+    opacity: 1;
+}
+}
+
+
+
+/* Slide-In Class */
+.slide-in {
+  animation: slideIn 0.5s forwards;
+}
+
+/* Slide-Out Class */
+.slide-out {
+  animation: slideOut 0.5s forwards;
+}
+
+.come {
+  animation: come 0.5s forwards;
+  background-color: #1a222b;
+  width: 100vw;
+  position: absolute;
+  top:0;
+  z-index: 23000;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow-x: hidden;
+}
+
+.go{
+  animation: go 0.5s forwards;
+  background-color: rgb(19, 55, 93);
+  width: 600px;
+  position: absolute;
+  display: none;
+  top:150px;
+  padding: 50px;
+  border-radius: 10px;
+  right:10px;
+}
+.slide-in {
+  overflow: auto; /* Allows scrolling */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;
+}
+.slide-in::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, and Edge */
+}
+

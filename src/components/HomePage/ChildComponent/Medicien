@@ -1,0 +1,377 @@
+import React, { useState, useEffect } from 'react';
+import styled from 'styled-components';
+import { space, layout, typography } from 'styled-system';
+import axios from 'axios';
+const FormWrapperContainer = styled.div`
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background: #ffffff;
+  overflow-y:auto;
+  overflow-x:hidden;
+  height:85vh;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  ${space}
+  ${layout}
+`;
+
+const FormField = styled.div`
+  margin-bottom: 24px;
+  ${space}
+  ${typography}
+`;
+
+const Label = styled.label`
+  display: block;
+  font-weight: 600;
+  margin-bottom: 8px;
+  ${typography}
+`;
+
+const Input = styled.input`
+  width: 100%;
+  padding: 12px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  font-size: 16px;
+  ${space}
+  ${typography}
+`;
+
+const TextArea = styled.textarea`
+  width: 100%;
+  padding: 12px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  font-size: 16px;
+  ${space}
+  ${typography}
+`;
+
+const Select = styled.select`
+  width: 100%;
+  padding: 12px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  font-size: 16px;
+  ${space}
+  ${typography}
+`;
+
+const Button = styled.button`
+  background: #007bff;
+  color: #ffffff;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background 0.3s ease;
+  
+  &:hover {
+    background: #0056b3;
+  }
+  ${space}
+  ${typography}
+`;
+
+const FormWrapper = ({ onSubmit }) => {
+  const [medicineName, setMedicineName] = useState('');
+  const [medicineDescription, setMedicineDescription] = useState('');
+  const [batchNumber, setBatchNumber] = useState('');
+  const [medicineId, setMedicineId] = useState('');
+  const [medicineGroup, setmedicineGroup] = useState('');
+  const [unit, setUnit] = useState('');
+  const [price, setPrice] = useState('');
+  const [soldIn, setSoldIn] = useState('pk');
+  const [stripPerPk, setStripPerPk] = useState('');
+  const [tabletsPerStrip, setTabletsPerStrip] = useState('');
+  const [quantity, setTotalQuantity] = useState(0);
+  const [expirationDate, setExpirationDate] = useState('');
+  useEffect(() => {
+    setMedicineId(`MED${new Date().getTime()}`);
+  }, []);
+
+  useEffect(() => {
+    if (unit === 'tablet') {
+      setSoldIn('pk');
+      setStripPerPk('');
+      setTabletsPerStrip('');
+      setPrice('');
+    }
+  }, [unit]);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      // Send a POST request to the backend API
+      const response = await axios.post('https://backtade-2.onrender.com/medicines', {
+        medicineName,
+        unit,
+        price,
+        medicineDescription,
+        batchNumber,
+        quantity,
+        soldIn,
+        stripPerPk,
+        tabletsPerStrip,
+        medicineId,
+        medicineGroup,
+        expirationDate
+      });
+
+      // Handle the response
+      console.log('Medicine added successfully:', response.data);
+
+      // Optionally reset the form fields
+      setMedicineName('');
+      setMedicineID('');
+      setMedicineGroup('');
+      setQuantity('');
+      setHowToUse('');
+      setSideEffects('');
+      setTotalQuantity(0);
+      setExpireDate('');
+    } catch (error) {
+      console.error('Error adding medicine:', error.response ? error.response.data : error.message);
+  };
+    // Reset form fields
+    setMedicineName('');
+    setMedicineDescription('');
+    setBatchNumber('');
+    setPrice('');
+    setUnit('');
+    setSoldIn('pk');
+    setStripPerPk('');
+    setTabletsPerStrip('');
+  };
+   
+
+  return (
+    <FormWrapperContainer>
+      <form onSubmit={handleSubmit}>
+      <FormField>
+          <Label htmlFor="medicineId" style={{fontFamily:' "DM Sans", sans-serif',textAlign:"center", border:"none" , color:"#333"}}>Medicine ID:</Label>
+          <Input
+            type="text"
+            id="medicineId"
+            value={medicineId}
+            readOnly
+          />
+        </FormField>
+        <FormField>
+          <Label htmlFor="medicineName" style={{fontFamily:' "DM Sans", sans-serif',textAlign:"center", border:"none" , color:"#333"}}>Medicine Name:</Label>
+          <Input
+            type="text"
+            id="medicineName"
+            value={medicineName}
+            onChange={(e) => setMedicineName(e.target.value)}
+            required
+          />
+        </FormField>
+        <FormField>
+          <Label htmlFor="unit" style={{fontFamily:' "DM Sans", sans-serif',textAlign:"center", border:"none" , color:"#333"}}>Unit:</Label>
+          <Select
+            id="unit"
+            value={unit}
+            onChange={(e) => setUnit(e.target.value)}
+            required
+            style={{fontFamily:' "DM Sans", sans-serif',textAlign:"center", border:"none" , color:"#333"}}
+          >
+            <option value="" >Select Unit</option>
+            <option value="tube">Tube</option>
+            <option value="amp">Amp</option>
+            <option value="tablet">Tablet</option>
+            <option value="bottle">Bottle</option>
+            <option value="capsule">capsule</option>
+          </Select>
+        </FormField>
+
+        {unit === 'tablet' && (
+          <>
+          <div style={{display:"grid", gridTemplateColumns:"1fr 1fr 1fr" ,width:"25%",height:"fit-content", justifyContent:"righ"}}>
+          <FormField  style={{width:"100%", margin:"0",fontFamily:' "DM Sans", sans-serif',textAlign:"center", border:"none" , color:"#333"}}>
+              TS
+              <Input
+                type="number"
+                id="tabletsPerStrip"
+                value={tabletsPerStrip}
+                onChange={(e) => setTabletsPerStrip(e.target.value)}
+                required
+                style={{width:"100%" , padding:"0" , height:"40px"}}
+              />
+            
+            </FormField>
+         
+<p  style={{width:"100%", fontSize:"20px", textAlign:"center", height:"40px",alignItems:"center" ,fontWeight:"bold",display:"flex" ,margin:"0" , justifyContent:"center"}}>&times;</p>
+<FormField  style={{width:"100%" , margin:"0" ,fontFamily:' "DM Sans", sans-serif',textAlign:"center", border:"none" , color:"#333"}}>
+            SP
+              <Input
+                type="number"
+                id="stripPerPk"
+                value={stripPerPk}
+                onChange={(e) => setStripPerPk(e.target.value)}
+                required
+                style={{width:"100%" , padding:"0" , height:"40px"}}
+              />
+            </FormField>
+            </div>
+         
+          
+            <FormField>
+              <Label htmlFor="soldIn" style={{fontFamily:' "DM Sans", sans-serif',textAlign:"center", border:"none" , color:"#333"}}>Sold In:</Label>
+              <Select
+                id="soldIn"
+                value={soldIn}
+                onChange={(e) => setSoldIn(e.target.value)}
+                style={{fontFamily:' "DM Sans", sans-serif',textAlign:"center", border:"none" , color:"#333"}}
+              >
+                <option value="pk">PK</option>
+                <option value="strip">Strip</option>
+                <option value="tablet">Tablet</option>
+              </Select>
+            </FormField>
+           
+           
+          </>
+        )}
+        {
+          unit === 'capsule' && (
+            <>
+            <div style={{display:"grid", gridTemplateColumns:"1fr 1fr 1fr" ,width:"25%",height:"fit-content", justifyContent:"righ"}}>
+            <FormField  style={{width:"100%", margin:"0",fontFamily:' "DM Sans", sans-serif',textAlign:"center", border:"none" , color:"#333"}}>
+               CL
+                <Input
+                  type="number"
+                  id="tabletsPerStrip"
+                  value='1'
+                  required
+                  style={{width:"100%" , padding:"0" , height:"40px"}}
+                />
+              
+              </FormField>
+            
+  <p  style={{width:"100%", fontSize:"20px", textAlign:"center", height:"40px",alignItems:"center" ,fontWeight:"bold",display:"flex" ,margin:"0" , justifyContent:"center" , fontFamily:' "DM Sans", sans-serif',textAlign:"center", border:"none" , color:"#333"}}>&times;</p>
+  <FormField  style={{width:"100%" , margin:"0" , fontFamily:' "DM Sans", sans-serif',textAlign:"center", border:"none" , color:"#333"}}>
+              CP
+                <Input
+                  type="number"
+                  id="stripPerPk"
+                  value={stripPerPk}
+                  onChange={(e) => setStripPerPk(e.target.value)}
+                  required
+                  style={{width:"100%" , padding:"0" , height:"40px"}}
+                />
+              </FormField>
+              </div>
+           
+            
+              <FormField>
+                <Label htmlFor="soldIn" style={{fontFamily:' "DM Sans", sans-serif',textAlign:"center", border:"none" , color:"#333"}}>Sold In:</Label>
+                <Select
+                  id="soldIn"
+                  value={soldIn}
+                  onChange={(e) => setSoldIn(e.target.value)}
+                  style={{fontFamily:' "DM Sans", sans-serif',textAlign:"center", border:"none" , color:"#333"}}
+                >
+                  <option value="pk">PK</option>
+                  <option value="strip">once</option>
+                </Select>
+              </FormField>
+             
+             
+            </>
+          )
+        }
+
+           <FormField>
+              <Label htmlFor="price" style={{fontFamily:' "DM Sans", sans-serif',textAlign:"center", border:"none" , color:"#333"}}>Price:</Label>
+              <Input
+                type="number"
+                id="price"
+                value={price}
+                onChange={(e) => setPrice(e.target.value)}
+                required
+              />
+            </FormField>
+           <FormField>
+              <Label htmlFor="quantity" style={{fontFamily:' "DM Sans", sans-serif',textAlign:"center", border:"none" , color:"#333"}}>Total Quantity:</Label>
+              <Input
+                type="number"
+                id="quantity"
+                value={quantity}
+                onChange={(e) => setTotalQuantity(e.target.value)}
+                required
+              />
+            </FormField>
+            <FormField>
+  <Label htmlFor="medicineGroup" style={{ fontFamily: '"DM Sans", sans-serif', textAlign: "center", border: "none", color: "#333" }}>
+    Medicine Group:
+  </Label>
+  <select
+    id="medicineGroup"
+    value={medicineGroup}
+    onChange={(e) => setmedicineGroup(e.target.value)}
+    required
+    style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }}
+  >
+    <option value="" disabled>Select a group</option>
+    <option value="Group A">Group A</option>
+    <option value="Group B">Group B</option>
+    <option value="Group C">Group C</option>
+    {/* Add more options as needed */}
+  </select>
+</FormField>
+
+        <FormField>
+          <Label htmlFor="medicineDescription" style={{fontFamily:' "DM Sans", sans-serif',textAlign:"center", border:"none" , color:"#333"}}>Medicine Description:</Label>
+          <TextArea
+            id="medicineDescription"
+            value={medicineDescription}
+            onChange={(e) => setMedicineDescription(e.target.value)}
+            required
+            rows="4"
+          />
+        </FormField>
+
+        <FormField>
+          <Label htmlFor="batchNumber" style={{fontFamily:' "DM Sans", sans-serif',textAlign:"center", border:"none" , color:"#333"}}>Batch Number:</Label>
+          <Input
+            type="text"
+            id="batchNumber"
+            value={batchNumber}
+            onChange={(e) => setBatchNumber(e.target.value)}
+            required
+          />
+        </FormField>
+
+        <FormField>
+        <Label
+          htmlFor="expirationDate"
+          style={{
+            fontFamily: '"DM Sans", sans-serif',
+            textAlign: "center",
+            border: "none",
+            color: "#333"
+          }}
+        >
+          Expiration Date:
+        </Label>
+        <Input
+          type="date"
+          id="expirationDate"
+          value={expirationDate}
+          onChange={(e) => setExpirationDate(e.target.value)}
+          required
+        />
+      </FormField>
+      
+
+        <Button type="submit" style={{fontFamily:' "DM Sans", sans-serif',textAlign:"center", border:"none" , color:"#333"}}>Submit</Button>
+      </form>
+    </FormWrapperContainer>
+  );
+};
+
+export default FormWrapper;
