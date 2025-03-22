@@ -8,9 +8,9 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<LoginForm />} />
+        <Route path="/admin" element={<LoginForm />} />
         <Route path="/home" element={<HomePage />} />
-        <Route path="/casher" element={<Casher/>} />
+        <Route path="/" element={<Casher/>} />
         <Route path="/casherPage" element={<Invetory/>} />
       </Routes>
     </Router>
