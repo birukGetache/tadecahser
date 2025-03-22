@@ -43,7 +43,7 @@ const CashierLogin = () => {
 
   // Handle navigating to admin page
   const handleAdmin = () => {
-    navigate("/");  // Navigate to the admin page
+    navigate("/admin");  // Navigate to the admin page
   };
 
   return (
